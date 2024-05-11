@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
-import '../apis/openai_api.dart';
-import '../services/network_service.dart';
 import 'package:dart_openai/dart_openai.dart';
 
 class Home extends GetView<HomeController> {
