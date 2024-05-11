@@ -1,10 +1,11 @@
-import 'package:ai_joke/controllers/bottom_navbar_controller.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../bindings/home_binding.dart';
+import '../bindings/app_binding.dart';
 import 'bottom_navbar_view.dart';
+import 'home_page_view.dart';
 import 'home_view.dart';
 
 class MyApp extends StatelessWidget {
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
             name: '/',
-            page: () => BottomNavBarView(),
-            binding: HomeBinding()
+            page: () => const HomeView(),
+            binding: AppBinding()
         )
       ],
       debugShowCheckedModeBanner: false,

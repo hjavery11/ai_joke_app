@@ -1,31 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/bottom_navbar_controller.dart';
+import '../controllers/home_controller.dart';
 import 'history_view.dart';
-import 'home_view.dart';
+import 'home_page_view.dart';
 
-class BottomNavBarView extends StatelessWidget {
-  final BottomNavBarController controller = Get.put(BottomNavBarController());
+class BottomNavBarView extends GetView<HomeController> {
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx( () {
-        switch (controller.selectedTab.value) {
-          case 0:
-            return const Home();
-          case 1:
-            return HistoryView();
-          default:
-            return const Home();
-        }
-      }
-      ),
-      bottomNavigationBar: Obx(() => BottomNavigationBar(
-        onTap: controller.changeTab,
-        currentIndex: controller.selectedTab.value,
+    return Obx(() => BottomNavigationBar(
+        onTap: controller.setIndex,
+        currentIndex: controller.currentIndex.value,
         unselectedItemColor: Colors.grey[500],
         selectedItemColor: Colors.blueAccent,
         items: const [
@@ -34,8 +21,7 @@ class BottomNavBarView extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.more_vert),label: 'More'),
         ],
 
-    )) ,
-    );
+    ));
   }
 }
 
