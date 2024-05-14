@@ -1,4 +1,5 @@
 import 'package:ai_joke/controllers/appbar_controller.dart';
+import 'package:ai_joke/controllers/bottom_nav_controller.dart';
 import 'package:ai_joke/controllers/home_controller.dart';
 import 'package:ai_joke/controllers/subject_view_controller.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class AppBinding implements Bindings{
     Get.lazyPut<AppBarController>(() => AppBarController());
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<MoreController>(() => MoreController());
+    Get.lazyPut<BottomNavBarController>(() => BottomNavBarController());
   }
 
 }

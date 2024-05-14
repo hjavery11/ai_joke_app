@@ -1,18 +1,23 @@
+import 'package:ai_joke/controllers/bottom_nav_controller.dart';
+import 'package:ai_joke/views/home_menu_view.dart';
+import 'package:ai_joke/views/homepage_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 import 'history_view.dart';
+import 'more_view.dart';
 import 'subject_page_view.dart';
 
-class BottomNavBarView extends GetView<HomeController> {
+class BottomNavBarView extends GetView<BottomNavBarController> {
 
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => BottomNavigationBar(
+    return Obx(
+        () => BottomNavigationBar(
         onTap: controller.setIndex,
-        currentIndex: controller.currentIndex.value,
+        currentIndex: controller.currentTab.value,
         unselectedItemColor: Colors.grey[500],
         selectedItemColor: Colors.blueAccent,
         items: const [
@@ -20,8 +25,8 @@ class BottomNavBarView extends GetView<HomeController> {
           BottomNavigationBarItem(icon: Icon(Icons.list_alt),label: 'History'),
           BottomNavigationBarItem(icon: Icon(Icons.more_vert),label: 'More'),
         ],
-
-    ));
+                )
+    );
   }
 }
 
