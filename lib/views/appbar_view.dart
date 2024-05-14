@@ -5,7 +5,9 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 class AppBarView extends GetView<HomeController> implements PreferredSizeWidget{
-  const AppBarView({Key? key}) : super(key: key);
+  const AppBarView({super.key});
+
+
 
 
   @override

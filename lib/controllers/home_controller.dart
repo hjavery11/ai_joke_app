@@ -1,8 +1,9 @@
-import 'package:ai_joke/views/home_page_view.dart';
+import 'package:ai_joke/views/subject_page_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../views/history_view.dart';
+import '../views/homepage_view.dart';
 import '../views/more_view.dart';
 
 class HomeController extends GetxController{

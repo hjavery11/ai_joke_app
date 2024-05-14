@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
 
-import 'package:ai_joke/controllers/home_page_controller.dart';
+import 'package:ai_joke/controllers/subject_view_controller.dart';
 import 'package:ai_joke/services/joke_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -11,8 +11,8 @@ import 'package:dart_openai/dart_openai.dart';
 
 import 'appbar_view.dart';
 
-class HomePageView extends GetView<HomePageController> {
-  const HomePageView({super.key});
+class SubjectPageView extends GetView<SubjectController> {
+  const SubjectPageView({super.key});
 
   @override
   Widget build(BuildContext context) {

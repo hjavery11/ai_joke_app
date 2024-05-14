@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePageController extends GetxController {
+class SubjectController extends GetxController {
   late final JokeService jokeService;
-  HomePageController(this.jokeService);
+  SubjectController(this.jokeService);
 
 
   //reactive list of joke types

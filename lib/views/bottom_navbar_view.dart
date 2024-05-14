@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 import 'history_view.dart';
-import 'home_page_view.dart';
+import 'subject_page_view.dart';
 
 class BottomNavBarView extends GetView<HomeController> {
 

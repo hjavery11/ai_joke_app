@@ -5,8 +5,8 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../bindings/app_binding.dart';
 import 'bottom_navbar_view.dart';
-import 'home_page_view.dart';
-import 'home_view.dart';
+import 'subject_page_view.dart';
+import 'homepage_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
             name: '/',
-            page: () => const HomeView(),
+            page: () => const HomePageView(),
             binding: AppBinding()
         )
       ],
