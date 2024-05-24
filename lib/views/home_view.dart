@@ -17,39 +17,29 @@ import 'appbar_view.dart';
 import 'audio_view.dart';
 import 'more_view.dart';
 
-class HomePageView extends StatelessWidget {
-  HomePageView({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
 
 
 
   @override
   Widget build(BuildContext context) {
-    final BottomNavBarController bottomNavController = Get.put(BottomNavBarController());
-    final HomeController homeController = Get.put(HomeController());
+    final BottomNavBarController bottomNavController = Get.find<BottomNavBarController>();
+    final HomeController homeController = Get.find<HomeController>();
 
     return Obx(
       () => Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const AppBarView(),
+      appBar: AppBarView(title:bottomNavController.currentTitle.value),
         body: IndexedStack(
           index: bottomNavController.currentTab.value,
           children: [
-            Obx(() => IndexedStack(
-              index: homeController.currentIndex.value,
-              children: [
                 HomeMenuView(),
-                SubjectPageView(),
-                PromptView(),
-                AudioView(),
                 HistoryView(),
                 MoreView(),
               ],
-            )),
-            HistoryView(),
-            MoreView(),
-          ],
-        ),
+      ),
         bottomNavigationBar: BottomNavBarView(),
       )
     );

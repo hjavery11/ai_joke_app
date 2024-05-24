@@ -22,20 +22,21 @@ class HomeMenuView extends GetView<HomeController> {
           children: [
             TextButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                  overlayColor: MaterialStateProperty.all<Color>(Colors.grey[800]!),
-                  foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
+                  backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+                  overlayColor: WidgetStateProperty.all<Color>(Colors.grey[800]!),
+                  foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.pressed)) {
                         return Colors.white.withOpacity(0.56);
+                      }
                       return Colors.white;
                     },
                   ),
                 ),
                 onPressed: () {
-                 controller.setIndex(1);
+                 Get.toNamed('/subject');
                 },
-                child: Text('Create by Subject',
+                child: const Text('Create by Subject',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 28,
@@ -47,20 +48,20 @@ class HomeMenuView extends GetView<HomeController> {
         ),
         TextButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              overlayColor: MaterialStateProperty.all<Color>(Colors.grey[800]!),
-              foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed))
+              backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+              overlayColor: WidgetStateProperty.all<Color>(Colors.grey[800]!),
+              foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  if (states.contains(WidgetState.pressed))
                     return Colors.white.withOpacity(0.56);
                   return Colors.white;
                 },
               ),
             ),
             onPressed: () {
-              controller.setIndex(2);
+              Get.toNamed('/prompt');
             },
-            child: Text('Create Joke from Prompt',
+            child: const Text('Create Joke from Prompt',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 28,
@@ -70,20 +71,20 @@ class HomeMenuView extends GetView<HomeController> {
         ),
         TextButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              overlayColor: MaterialStateProperty.all<Color>(Colors.grey[800]!),
-              foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed))
+              backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+              overlayColor: WidgetStateProperty.all<Color>(Colors.grey[800]!),
+              foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                  if (states.contains(WidgetState.pressed))
                     return Colors.white.withOpacity(0.56);
                   return Colors.white;
                 },
               ),
             ),
             onPressed: () {
-              controller.setIndex(3);
-            },
-            child: Text('Generate Audio',
+              Get.toNamed('/audio');
+              },
+            child: const Text('Generate Audio',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 28,

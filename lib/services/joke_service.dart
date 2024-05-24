@@ -1,8 +1,18 @@
+import 'package:ai_joke/data/repositories/joke_repository.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../controllers/history_controller.dart';
+import '../data/models/joke.dart';
 
 class JokeService {
   final String? apiKey = dotenv.env['OPEN_AI_API_KEY'];
+
+  final JokeRepository _jokeRepository;
+
+  JokeService(this._jokeRepository);
 
   Future<String> getJoke(String topic, String type) async {
     if (type == 'Surprise me') {
@@ -17,8 +27,7 @@ class JokeService {
     systemMessage = OpenAIChatCompletionChoiceMessageModel(
       content: [
         OpenAIChatCompletionChoiceMessageContentItemModel.text(
-            "You are a comedian. You are going to be given a joke topic, and a type of joke. Return a funny joke for that topic in the specific style given. The style choices you will be given are Knock-knock, dad, one-liner, pun, yo mama, and a random type. Try to make the jokes unique to each joke type, and not repeat jokes across types.")
-      ],
+     "You are a comedian. You are going to be given a joke topic, and a type of joke. Return a funny joke for that topic in the specific style given. Try to make the jokes unique to each joke type, and not repeat jokes across types")      ],
       role: OpenAIChatMessageRole.assistant,
     );
 
@@ -34,16 +43,32 @@ class JokeService {
     final requestMessages = [systemMessage,userMessage];
 
     OpenAIChatCompletionModel jokePrompt = await OpenAI.instance.chat.create(
-      model: "gpt-4-turbo-preview",
+     // model: "gpt-4-turbo-preview",
+      model: 'gpt-4o',
       messages: requestMessages,
-      temperature: 1,
+      temperature: .5,
       maxTokens: 500,
     );
 
     OpenAIChatCompletionChoiceMessageModel data =
         jokePrompt.choices.first.message;
     Map map = data.toMap();
+    String finalResponse = map['content'][0]['text'];
 
-    return map['content'][0]['text']; // Return the joke text
+    var joke = Joke(
+      topic: topic,
+      type: type,
+      response: finalResponse
+    );
+
+
+    _jokeRepository.insertJoke(joke);
+
+    // Refresh the history view
+    HistoryController historyController = Get.find<HistoryController>();
+    historyController.fetchJokes();
+
+
+    return finalResponse; // Return the joke text
   }
 }

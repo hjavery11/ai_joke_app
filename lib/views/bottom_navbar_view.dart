@@ -1,6 +1,6 @@
 import 'package:ai_joke/controllers/bottom_nav_controller.dart';
 import 'package:ai_joke/views/home_menu_view.dart';
-import 'package:ai_joke/views/homepage_view.dart';
+import 'package:ai_joke/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

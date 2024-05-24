@@ -7,7 +7,7 @@ import '../bindings/app_binding.dart';
 import '../routes/routes.dart';
 import 'bottom_navbar_view.dart';
 import 'subject_page_view.dart';
-import 'homepage_view.dart';
+import 'home_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       getPages: Routes.pages,
       debugShowCheckedModeBanner: false,
       title: 'Joke Creator',
+      initialBinding: AppBinding(),
     );
   }
 

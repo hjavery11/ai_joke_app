@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../routes/routes.dart';
 import '../views/history_view.dart';
-import '../views/homepage_view.dart';
+import '../views/home_view.dart';
 import '../views/more_view.dart';
 
 
