@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1054376139358",
+    "project_id": "ai-joke-app",
+    "storage_bucket": "ai-joke-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054376139358:android:f6bc8a7f28ef2f796e72cf",
+        "android_client_info": {
+          "package_name": "com.HJ.aiJoke"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbbLUsgcum5keXzLs20ff36sTJWCb-qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054376139358:android:5320f3059a69973b6e72cf",
+        "android_client_info": {
+          "package_name": "com.hej.ai_joke"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbbLUsgcum5keXzLs20ff36sTJWCb-qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

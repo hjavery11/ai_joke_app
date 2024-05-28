@@ -11,25 +11,18 @@ import 'views/subject_page_view.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 
 
 void main() async {
   await dotenv.load(fileName: 'assets/app.env');
 
   WidgetsFlutterBinding.ensureInitialized();
-  await initServices();
-  runApp(const MyApp());
-}
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-Future<void> initServices() async {
-  DatabaseHelper databaseHelper = DatabaseHelper();
-  await Get.putAsync<DatabaseHelper>(() async {
-    bool deleteDB = false;
-    if (deleteDB) {
-      await databaseHelper.deleteExistingDatabase();
-      print("Database deleted");
-    }
-    await databaseHelper.database;
-    return databaseHelper;
-  }, permanent: true);
+  runApp(const MyApp());
 }

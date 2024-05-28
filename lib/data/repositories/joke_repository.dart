@@ -1,41 +1,52 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../database_helper.dart';
 import '../models/joke.dart';
 
 class JokeRepository {
-  final DatabaseHelper _databaseHelper = Get.find<DatabaseHelper>();
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final CollectionReference jokesCollection = FirebaseFirestore.instance.collection('jokes');
 
   JokeRepository() {
-    // Ensure DatabaseHelper is ready
-    _initialize();
-  }
-
-  Future<void> _initialize() async {
-    await _databaseHelper.database;  // Wait for the database to be ready if necessary
+    // Initialization if needed
   }
 
   Future<void> insertJoke(Joke joke) async {
-    final Database db = await _databaseHelper.database;
-
-    await db.insert(
-        'jokes',
-        joke.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace
-    );
+    try {
+      await jokesCollection.add(joke.toMap());
+    } catch (e) {
+      print("Failed to add joke: $e");
+    }
   }
 
   Future<List<Joke>> fetchJokes() async {
-    final Database db = await _databaseHelper.database;
-
-    final List<Map<String,Object?>> jokes = await db.query('jokes');
-
-    return List.generate(jokes.length, (i) {
-      return Joke.fromMap(jokes[i]);
-    });
-
+    try {
+      QuerySnapshot querySnapshot = await jokesCollection.get();
+      return querySnapshot.docs.map((doc) {
+        return Joke.fromMap(doc.data() as Map<String, dynamic>);
+      }).toList();
+    } catch (e) {
+      print("Failed to fetch jokes: $e");
+      return [];
+    }
   }
 
+  Future<void> deleteJoke(String jokeId) async {
+    try {
+      await jokesCollection.doc(jokeId).delete();
+    } catch (e) {
+      print("Failed to delete joke: $e");
+    }
+  }
+
+  Future<void> updateJoke(String jokeId, Joke joke) async {
+    try {
+      await jokesCollection.doc(jokeId).update(joke.toMap());
+    } catch (e) {
+      print("Failed to update joke: $e");
+    }
+  }
 }
