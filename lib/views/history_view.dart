@@ -30,12 +30,11 @@ class HistoryView extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Topic: ${joke.topic}',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
+                            Text('Topic: ${joke.topic}'),
                             Text('Type : ${joke.type}'),
+                            Text('Created: ${joke.localizeTime()}'),
                             SizedBox(height: 4.0),
-                            Text('Response : ${joke.response}'),
+                            Text('Response :\n${joke.response}'),
                           ],
                         ),
                       ),

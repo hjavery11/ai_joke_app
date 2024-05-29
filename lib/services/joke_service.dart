@@ -61,10 +61,12 @@ class JokeService {
       Map map = data.toMap();
       String finalResponse = map['content'][0]['text'];
 
+      int currentTime = DateTime.now().millisecondsSinceEpoch;
       var joke = Joke(
           topic: topic,
           type: type,
-          response: finalResponse
+          response: finalResponse,
+          timestamp: currentTime
       );
 
 

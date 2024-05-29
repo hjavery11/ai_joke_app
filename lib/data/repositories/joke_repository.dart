@@ -24,7 +24,8 @@ class JokeRepository {
 
   Future<List<Joke>> fetchJokes() async {
     try {
-      QuerySnapshot querySnapshot = await jokesCollection.get();
+      QuerySnapshot querySnapshot = await jokesCollection.orderBy('timestamp',descending: true).get();
+      //QuerySnapshot querySnapshot = await jokesCollection.get();
       return querySnapshot.docs.map((doc) {
         return Joke.fromMap(doc.data() as Map<String, dynamic>);
       }).toList();
